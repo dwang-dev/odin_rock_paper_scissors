@@ -2,11 +2,15 @@ let TARGET_SCORE = 5;
 let playerScore = 0;
 let computerScore = 0;
 
-const chatBox = document.querySelector(".chatBox");
+const bodyPrimaryText = document.querySelector(".bodyPrimaryText");
+const bodySecondaryText = document.querySelector(".bodySecondaryText")
+const playerScoreNode = document.querySelector(".player_score");
+const computerScoreNode = document.querySelector(".computer_score");
 const choices = document.querySelector(".choices");
 choices.addEventListener("click", (e) => {handleClick(e.target.className)});
 
-chatBox.textContent = "Rock, Paper, Scissors. Let's play!"
+bodyPrimaryText.textContent = "Rock, Paper, Scissors. Let's play!"
+bodySecondaryText.textContent = `First to ${TARGET_SCORE} is the winner`
 
 function getComputerChoice() {
     random_num = Math.random()
@@ -26,20 +30,26 @@ function determineRound(player_choice, computer_choice) {
 
     if (player_choice == "rock") {
         if (computer_choice == "scissors") {
+            bodySecondaryText.textContent = `Rock beats Scissors`
             return "player";
         } else if (computer_choice == "paper") {
+            bodySecondaryText.textContent = `Paper beats Rock`
             return "computer";
         }
     } else if (player_choice == "paper") {
         if (computer_choice == "rock") {
+            bodySecondaryText.textContent = `Paper beats Rock`
             return "player";
         } else if (computer_choice == "scissors") {
+            bodySecondaryText.textContent = `Paper beats Scissors`
             return "computer";
         }
     } else if (player_choice == "scissors") {
         if (computer_choice == "paper") {
+            bodySecondaryText.textContent = `Scissors beats Paper`
             return "player";
         } else if (computer_choice == "rock") {
+            bodySecondaryText.textContent = `Rock beats Scissors`
             return "computer";
         }
     } else {
@@ -50,10 +60,15 @@ function determineRound(player_choice, computer_choice) {
 function updateScore(roundResult) {
     if (roundResult == "player") {
         playerScore++;
+        bodyPrimaryText.textContent = `You win!`
     } else if (roundResult == "computer") {
         computerScore++;
+        bodyPrimaryText.textContent = `You lose!`
+    } else {
+        bodyPrimaryText.textContent = `It's a draw..`
     }
-    chatBox.textContent = `You have ${playerScore} points. I have ${computerScore} points. First to ${TARGET_SCORE}!`;
+    playerScoreNode.textContent = `Player Score: ${playerScore}`
+    computerScoreNode.textContent = `Computer Score: ${computerScore}`
 }
 
 function isGameOver() {
@@ -62,12 +77,11 @@ function isGameOver() {
 
 function endGame() {
     if (playerScore == TARGET_SCORE) {
-        chatBox.textContent = "Game over. You win! I scored " +
-        computerScore + " points. You scored " + playerScore + " points";
+        bodyPrimaryText.textContent = "Game over! You win."
     } else if (computerScore == TARGET_SCORE) {
-        chatBox.textContent = "Game over. You lose! I scored " +
-        computerScore + " points. You scored " + playerScore + " points";
+        bodyPrimaryText.textContent = "Game over! I win.";
     }
+    bodySecondaryText.textContent = "Lets play again!"
     playerScore = 0;
     computerScore = 0;
 }

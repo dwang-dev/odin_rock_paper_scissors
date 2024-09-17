@@ -4,14 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
+    <link rel = "stylesheet", href = "./style.css">
     <script src = "script.js" defer></script>
 </head>
 <body>
-    <div class = "choices">
-        <button class = "rock">Rock</button>
-        <button class = "paper">Paper</button>
-        <button class = "scissors">Scissors</button>
+    <div class = "header">
+        <p class = "header_title">Rock Paper Scissors</p>
+        <p class = "header_text">Rock beats Scissors | Scissors beats Paper  | Paper beats Rock</p>
     </div>
-    <div class = "chatBox"></div>
+    <div class = "body">
+        <p class = "bodyPrimaryText"></p>
+        <p class = "bodySecondaryText"></p>
+        <div class = "scores">
+            <p class = player_score>Player: 0</p>
+            <p class = computer_score>Computer: 0</p>
+        </div>
+        <div class = "choices">
+            <button class = "rock">🗿</button>
+            <button class = "paper">📝</button>
+            <button class = "scissors">✂️</button>
+        </div>
+    </div>
+    <div class = "footer">
+        <p class>Copyright © @dwang-dev 2024</p>
+    </div>
 </body>
 </html>
