@@ -1,4 +1,4 @@
-let TARGET_SCORE = 5;
+const TARGET_SCORE = 5;
 let playerScore = 0;
 let computerScore = 0;
 
